@@ -1,0 +1,11 @@
+- Build Docker image using Dockerfile
+    docker build -t fastapi-base-app:1.0 .
+
+- Tagging local image with remote
+    docker tag fastapi-base-app:1.0 thomassojan/fastapi-base-app:1.0
+
+- Login to remote docker repository
+    docker login
+
+- Push to remote registery
+    docker push thomassojan/fastapi-base-app:1.0

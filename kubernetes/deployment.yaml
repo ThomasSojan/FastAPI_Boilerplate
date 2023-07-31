@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-python-test-app
+  namespace: fastapi-test-ns
+  labels:
+    app: fastapi-python-test-app
+spec: 
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fastapi-python-test-app
+  template:
+    metadata:
+      labels:
+        app: fastapi-python-test-app
+    spec:
+      containers:
+      - name: fastapi-python-test-app
+        image: thomassojan/fastapi-base-app:1.0
+        ports:
+        - containerPort: 8080
+        resources:
+          requests: 
+            cpu: 500m
+            memory: 300Mi
+          limits: 
+            memory: 400Mi
+        volumeMounts:
+          - name: fastapi-python-test-app-vol
+            mountPath: /etc/config
+      volumes:
+        - name: fastapi-python-test-app-vol
+          configMap: 
+            name: python-test-app-cm

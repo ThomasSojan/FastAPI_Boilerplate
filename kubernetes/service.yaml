@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fastapi-python-test-app-svc
+  namespace: fastapi-test-ns
+spec:
+  selector:
+    app: fastapi-python-test-app
+  ports:
+    - name: 8080-tcp
+      port: 8080
+      protocol: TCP
+      targetPort: 8080	
